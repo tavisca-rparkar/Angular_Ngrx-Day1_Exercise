@@ -1,20 +1,15 @@
-class StringArrayOperations {
-    names : Array<string>;
-    constructor(names: Array<string>) {
-        this.names = names;
-    }
+export class StringArrayOperations {
+    products : Array<Product>;
 
-    sortNamesByLength(): Array<string> {
-        return this.names.sort((a,b) => {
-            return a.length - b.length;
+    sortNamesByLength(products: Array<Product>): Array<Product> {
+		this.products = products;
+        return this.products.sort((a,b) => {
+            return a.ProductName.localeCompare(b.ProductName);
         });
     }
 
-    reverseNames(): Array<string> {
-        return this.names.reverse();
+    reverseNames(products: Array<Product>): Array<Product> {
+		this.products = products;
+        return this.products.reverse();
     }
 }
-
-let obj = new StringArrayOperations(["Nicholas","John","Adam","Rey"]);
-console.log(`Sorted Names : ${obj.sortNamesByLength()}`);
-console.log(`Reverse Names : ${obj.reverseNames()}`);
