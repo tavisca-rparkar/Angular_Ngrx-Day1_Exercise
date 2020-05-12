@@ -39,8 +39,16 @@ export class ProductComponent implements OnInit {
     this.product = new Product(0, '', 0, '');
   }
   save(): void {
-    this.products = this.logic.saveProducts(this.product);
-    console.log(JSON.stringify(this.products));
+    let index = this.products.findIndex(x => x.ProductId == this.product.ProductId);
+    if(index > -1)
+    {
+      this.products[index] = this.product;
+    }
+    else
+    {
+      this.products = this.logic.saveProducts(this.product);
+      console.log(JSON.stringify(this.products));
+    }
   }
   getSelectedProduct(p: Product): void {
       this.product = Object.assign({}, p);
