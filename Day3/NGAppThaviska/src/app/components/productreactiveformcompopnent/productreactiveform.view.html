@@ -3,7 +3,7 @@
     <form name="frmprd" [formGroup]='frmPrd' (ngSubmit)="save()">
         <div class="form-group">
             <label>Product Id</label>
-            <input type="text" name="ProductId" formControlName="ProductId" class="form-control">
+            <input type="text" name="ProductId" formControlName="ProductId" class="form-control" [ngClass]="{'onInvalid': !frmPrd.controls.ProductId.valid}">
             <div class="alert alert-danger" *ngIf="frmPrd.controls.ProductId.dirty && !frmPrd.controls.ProductId.valid">
                 <p *ngIf="frmPrd.controls.ProductId.errors.required">Product Id is required</p>
                 <p *ngIf="frmPrd.controls.ProductId.errors.minlength">Product Id must be 2 digits minimum</p>
@@ -15,14 +15,14 @@
         </div>
         <div class="form-group">
             <label>Product Name</label>
-            <input type="text" name="ProductName" formControlName="ProductName" class="form-control">
+            <input type="text" name="ProductName" formControlName="ProductName" class="form-control" [ngClass]="{'onInvalid': !frmPrd.controls.ProductName.valid}">
             <div class="alert alert-danger" *ngIf="frmPrd.controls.ProductName.dirty && !frmPrd.controls.ProductName.valid">
                 <p *ngIf="frmPrd.controls.ProductName.errors.pattern">Product Name must start with uppercase and contain no special chars</p>
             </div>
         </div>
         <div class="form-group">
             <label>Price</label>
-            <input type="text" name="Price" formControlName="Price" class="form-control">
+            <input type="text" name="Price" formControlName="Price" class="form-control" [ngClass]="{'onInvalid': !frmPrd.controls.Price.valid}">
         </div>
         <div class="form-group">
             <label>Category</label>

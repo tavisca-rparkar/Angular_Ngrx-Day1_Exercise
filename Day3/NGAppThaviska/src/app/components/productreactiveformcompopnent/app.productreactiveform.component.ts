@@ -6,7 +6,10 @@ import {FormGroup, FormControl, Validators} from '@angular/forms';
 import {MyCustomValidator} from './app.custom.validator';
 @Component({
   selector: 'app-productreactive-component',
-  templateUrl: './productreactiveform.view.html'
+  templateUrl: './productreactiveform.view.html',
+  styleUrls: [
+    './productreactiveform.view.css'
+  ]
 })
 export class ProductReactiveFormComponent implements OnInit {
   product: Product;
