@@ -40,7 +40,10 @@ export class ProductReactiveFormComponent implements OnInit {
               MyCustomValidator.checkEven,
               MyCustomValidator.checkUnique
            ])),
-        ProductName: new FormControl(this.product.ProductName),
+        ProductName: new FormControl(this.product.ProductName,
+          Validators.compose([
+            Validators.pattern('[A-Z][A-Za-z0-9]*')
+          ])),
         Price: new FormControl(this.product.Price),
         Category: new FormControl(this.product.Category)
       });

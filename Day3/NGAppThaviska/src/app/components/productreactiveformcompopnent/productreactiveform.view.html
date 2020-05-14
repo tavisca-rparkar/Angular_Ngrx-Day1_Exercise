@@ -16,6 +16,9 @@
         <div class="form-group">
             <label>Product Name</label>
             <input type="text" name="ProductName" formControlName="ProductName" class="form-control">
+            <div class="alert alert-danger" *ngIf="frmPrd.controls.ProductName.dirty && !frmPrd.controls.ProductName.valid">
+                <p *ngIf="frmPrd.controls.ProductName.errors.pattern">Product Name must start with uppercase and contain no special chars</p>
+            </div>
         </div>
         <div class="form-group">
             <label>Price</label>
