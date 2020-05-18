@@ -10,6 +10,8 @@ import { CommunicatorService } from 'src/app/services/app.communicator.service';
   styleUrls: ['./customercomponent.component.css']
 })
 export class CustomercomponentComponent implements OnInit {
+  filteredCustomers: Array<Customer>;
+  searchData: string;
   customer: Customer;
   customers: Array<Customer>;
   headers: Array<string>;
@@ -23,6 +25,10 @@ export class CustomercomponentComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.communicatorService.searchedData.subscribe((data) => {
+      this.searchData = data;
+      this.getsearchedDataInfo();
+    });
     this.customers = this.logic.getCustomers();
     for(let c in this.customer)
     {
@@ -34,4 +40,14 @@ export class CustomercomponentComponent implements OnInit {
     this.communicatorService.getSelectedCustomer(cust.CustomerId);
   }
 
+  getsearchedDataInfo() {
+    this.customers = this.customers.filter((v,i) => {
+      return v.CustomerName === this.searchData || v.City === this.searchData;
+    });
+    var customerIds: Array<number>=[];
+    this.customers.forEach((v,i) => {
+      customerIds.push(v.CustomerId);
+    })
+    this.communicatorService.getSelectedCustomerInfo(customerIds);
+  }
 }

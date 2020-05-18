@@ -1,7 +1,7 @@
 export const Customers = [
-    {CustomerId:101, CustomerName:"John", City:"Pune", Email:"john@cena.com", ContactNumber:"9876543210"},
-    {CustomerId:102, CustomerName:"John", City:"Pune", Email:"john@cena.com", ContactNumber:"9876543210"},
-    {CustomerId:103, CustomerName:"John", City:"Pune", Email:"john@cena.com", ContactNumber:"9876543210"}
+    {CustomerId:101, CustomerName:"John", City:"Pune", Email:"john@doe.com", ContactNumber:"9876543210"},
+    {CustomerId:102, CustomerName:"Steve", City:"Mumbai", Email:"steve@doe.com", ContactNumber:"9876543210"},
+    {CustomerId:103, CustomerName:"Jack", City:"Pune", Email:"jack@sparrow.com", ContactNumber:"9876543210"}
 ];
 
 export const Orders= [

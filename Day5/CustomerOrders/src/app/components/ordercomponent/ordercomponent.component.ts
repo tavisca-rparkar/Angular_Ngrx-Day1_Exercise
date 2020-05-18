@@ -10,6 +10,7 @@ import { Logic } from 'src/app/models/app.logic';
 })
 export class OrdercomponentComponent implements OnInit {
   selectedCustomerId: number;
+  searchedCustomerIds: Array<number>;
   order: Order;
   orders: Array<Order>;
   filteredOrders: Array<Order>;
@@ -28,6 +29,10 @@ export class OrdercomponentComponent implements OnInit {
       this.selectedCustomerId = customerId;
       this.getFilteredOrders();
     });
+    this.communicatorService.searchedCustomerInfo.subscribe((data) => {
+      this.searchedCustomerIds = data;
+      this.getFilteredOrdersForSearched();
+    });
     this.orders = this.logic.getOrders();
     for(let c in this.order)
     {
@@ -38,6 +43,15 @@ export class OrdercomponentComponent implements OnInit {
   getFilteredOrders(){
     this.filteredOrders = this.orders.filter((v,i) => {
       return v.CustomerId === this.selectedCustomerId;
+    })
+  }
+
+  getFilteredOrdersForSearched() {
+    console.log(this.searchedCustomerIds);
+    this.filteredOrders = this.orders.filter((v,i) => {
+      this.searchedCustomerIds.forEach((s,i) => {
+        return s === v.CustomerId;
+      })
     })
   }
 
